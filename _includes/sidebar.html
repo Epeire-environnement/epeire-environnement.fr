@@ -1,0 +1,47 @@
+<div class="sidebar">
+	<div class="sidebar-about">
+
+		<h2 class="sidebar-logo">
+			<a href="{{ site.baseurl }}" title="Epeire environnement">
+				<img src="/images/logo.png" alt="logo {{ site.title }}">
+			</a>
+		</h2>
+
+		<p class="lead">{{ site.description }}</p>
+	</div>
+
+	<nav class="sidebar-nav">
+		<a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}">
+			Accueil
+		</a>
+
+		{% assign pages_list = site.pages %}
+		{% for node in pages_list %}
+		{% if node.title != null %}
+		{% if node.layout == "page" %}
+		{% if node.link != null %}
+		<a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">
+			{{ node.link }}
+		</a>
+		{% endif %}
+		{% endif %}
+		{% endif %}
+		{% endfor %}
+
+		<!-- <a class="sidebar-nav-item" href="{{ site.github.repo }}/archive/v{{ site.version }}.zip">Download</a>
+		<a class="sidebar-nav-item" href="{{ site.github.repo }}">GitHub project</a>
+		<span class="sidebar-nav-item">Currently v{{ site.version }}</span> -->
+	</nav>
+
+	<p class="sidebar-mention">
+		&copy; {{ site.time | date: '%Y' }}. <small>
+			<a class="" href="/mentions-legales.html">Mentions
+				légales
+			</a>
+			<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" target="_blank"
+				title="Ce site est sous licence CC BY-SA 4.0">
+				<img src="/images/by-sa.svg" alt="Ce site est sous licence CC BY-SA 4.0" style="max-width: 80px;">
+			</a>
+		</small>
+	</p>
+</div>
